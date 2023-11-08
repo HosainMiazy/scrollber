@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css" media="all">
+
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    width: 1000px;
+    margin: 0 auto; /* Center the body content horizontally */
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center; /* Center the body content vertically */
+    height: 100vh; /* Ensure full viewport height */
+}
+
+/* ... other CSS styles ... */
+
+/* Position the range input fixed at the bottom */
+input[type="range"] {
+    position: fixed;
+    bottom: 10%; /* Adjust this value to control the vertical position */
+    left: 50%;
+    right: 50%; /* Center the input horizontally */
+    transform: translateX(-50%); /* Center the input horizontally */
+    width: 80%; /* Adjust the width as needed */
+    z-index: 1; /* Ensure the input is on top of other content */
+    background-color: #ddd;
+}
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        .progress {
+            width: 0;
+            height: 30px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+        }
+
+
+        .main {
+          width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+            justify-content: center;
+            margin: auto;
+        }
+
+        .sub {
+            background-color: blueviolet;
+            margin: 5px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            font-size: 25px;
+            color: white;
+        }
+     section{
+            background-color: aqua;
+            padding: 30px;
+            display: grid;
+            justify-content: center;
+            overflow: hidden;
+            display:block;
+            margin:0 auto;
+            width: 90%;
+        }
+  </style>
+</head>
+<body>
+  <section>
+    
+  <div class="main">
+    <div class="sub">BOX1</div>
+    <div class="sub">BOX2</div>
+    <div class="sub">BOX3</div>
+    <div class="sub">BOX4</div>
+    <div class="sub">BOX5</div>
+    <div class="sub">BOX6</div>
+    <div class="sub">BOX7</div>
+    <div class="sub">BOX8</div>
+    <div class="sub">BOX9</div>
+    <div class="sub">BOX10</div>
+  </div>
+  </section>
+  
+
+
+    <input type="range" id="width-range" min="100" max="2000" value="1000"
+    oninput="updateWidth()">
+    
+    
+    
+  <script type="text/javascript" charset="utf-8">
+    const body = document.body;
+const progressBar = document.getElementById("progress-bar");
+const widthRange = document.getElementById("width-range");
+
+function updateWidth() {
+    const newWidth = widthRange.value;
+    body.style.width = newWidth + "px";
+    progressBar.style.width = "0";
+}
+
+widthRange.addEventListener("mousemove", (event) => {
+    if (event.buttons === 1) {
+        updateWidth();
+    }
+});
+
+  </script>
+</body>
+</html>
